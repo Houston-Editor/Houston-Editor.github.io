@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>My GitHub Pages Site</title>
+    <meta name="description" content="A simple GitHub Pages site." />
+
+    <style>
+      :root {
+        --bg: #0b1020;
+        --card: rgba(255, 255, 255, 0.08);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.72);
+        --border: rgba(255, 255, 255, 0.14);
+        --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+      }
+
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+          "Segoe UI Emoji";
+        color: var(--text);
+        background:
+          radial-gradient(1000px 600px at 20% 10%, rgba(96, 165, 250, 0.25), transparent 60%),
+          radial-gradient(900px 700px at 85% 20%, rgba(244, 114, 182, 0.20), transparent 55%),
+          radial-gradient(900px 700px at 50% 90%, rgba(52, 211, 153, 0.14), transparent 55%),
+          var(--bg);
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .card {
+        width: min(760px, 100%);
+        padding: 28px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+
+      header {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 14px;
+      }
+
+      .badge {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        display: grid;
+        place-items: center;
+        background: rgba(255,255,255,0.06);
+      }
+
+      h1 {
+        font-size: 24px;
+        line-height: 1.2;
+        margin: 0;
+        letter-spacing: -0.02em;
+      }
+
+      p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      a.button {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        text-decoration: none;
+        color: var(--text);
+        background: rgba(255,255,255,0.06);
+        transition: transform 120ms ease, background 120ms ease;
+      }
+
+      a.button:hover {
+        transform: translateY(-1px);
+        background: rgba(255,255,255,0.10);
+      }
+
+      .footer {
+        margin-top: 18px;
+        font-size: 13px;
+        color: rgba(255,255,255,0.55);
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      code {
+        padding: 2px 6px;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.10);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="card">
+      <header>
+        <div class="badge" aria-hidden="true">🚀</div>
+        <div>
+          <h1>It’s live.</h1>
+          <p>This is a simple <strong>GitHub Pages</strong> site deployed from an <code>index.html</code> file.</p>
+        </div>
+      </header>
+
+      <section class="actions">
+        <a class="button" href="https://github.com/" target="_blank" rel="noreferrer">
+          <span>View GitHub</span> <span aria-hidden="true">↗</span>
+        </a>
+        <a class="button" href="#" id="copyUrl">
+          <span>Copy site URL</span> <span aria-hidden="true">📋</span>
+        </a>
+      </section>
+
+      <div class="footer">
+        <span>Deployed: <span id="deployedAt"></span></span>
+        <span aria-hidden="true">•</span>
+        <span>Host: <code id="host"></code></span>
+      </div>
+    </main>
+
+    <script>
+      // Fill in a couple useful bits of info
+      document.getElementById("deployedAt").textContent = new Date().toLocaleString();
+      document.getElementById("host").textContent = window.location.host;
+
+      // Copy URL button
+      document.getElementById("copyUrl").addEventListener("click", async (e) => {
+        e.preventDefault();
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          e.target.closest("a").querySelector("span").textContent = "Copied!";
+          setTimeout(() => (e.target.closest("a").querySelector("span").textContent = "Copy site URL"), 1200);
+        } catch {
+          alert("Couldn’t copy automatically. URL: " + window.location.href);
+        }
+      });
+    </script>
+  </body>
+</html>
