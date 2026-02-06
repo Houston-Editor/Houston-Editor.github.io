@@ -1,0 +1,18 @@
+{
+    "applinks": {
+        "details": [
+            {
+                "appIDs": [
+                    "space.spaceboat.houston"
+                ],
+                "components": [
+                ]
+            }
+        ]
+    },
+    "webcredentials": {
+        "apps": [
+            "space.spaceboat.houston"
+        ]
+    }
+}
